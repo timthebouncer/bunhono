@@ -3,8 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun run --watch index.ts",
-    "build": "bun run build:vercel"
+    "dev": "bun run --watch index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
