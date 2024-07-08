@@ -1,10 +1,19 @@
-import { Hono } from 'hono'
-import { cors } from 'hono/cors'
+//@ts-ignore
 
-const app = new Hono()
+import { Hono } from 'hono';
 
-app.use('/api/*', cors())
-app.get('/', (c) => c.text('Hello Bun!'))
-    .get('/api/dummy',(c)=> c.text('dummyyyyyy'))
+export const config = {
+    runtime: 'edge',
+};
 
-export default app
+const app = new Hono();
+
+
+app.get('/world', async (c) => {
+    return c.json({
+        message: 'Another Route!',
+    });
+});
+
+//@ts-ignore
+// export default handle(app, '/api');
