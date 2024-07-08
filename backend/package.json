@@ -2,6 +2,10 @@
   "name": "hono",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun run --watch index.ts",
+    "build": "bun run build:vercel"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
