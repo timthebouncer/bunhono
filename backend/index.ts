@@ -1,6 +1,11 @@
 import { Hono } from 'hono'
+import { handle } from "hono/vercel";
 
-const overViewApp = new Hono().get('/', (c) => {
+export const runtime = 'edge'
+
+const app = new Hono().basePath("/api");
+
+app.get('/', (c) => {
     return c.json(
         {
             totalRevenue: {
@@ -22,9 +27,7 @@ const overViewApp = new Hono().get('/', (c) => {
         },
         200,
     )
-})
-
-const chartDataApp = new Hono().get('/', (c) => {
+}).get('/qq', (c) => {
     const getRandomNumber = () => {
         return Math.floor(Math.random() * 5000) + 1000
     }
@@ -49,9 +52,4 @@ const chartDataApp = new Hono().get('/', (c) => {
     )
 })
 
-const app = new Hono()
-    .route('/overview', overViewApp)
-    .route('/chartdata', chartDataApp)
-
-export type AppType = typeof app
-export default app
+export default handle(app);
